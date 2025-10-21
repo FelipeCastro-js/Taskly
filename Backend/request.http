@@ -1,19 +1,22 @@
-GET http://localhost:3001/api/notes
+GET http://localhost:3000/api/notes
 
 ###
-GET http://localhost:3001/api/notes/1234
+GET http://localhost:3000/api/notes/68f7e0936a2488661bdfc5f4
 
 ###
-POST http://localhost:3001/api/notes
+DELETE http://localhost:3000/api/notes/68f7e0936a2488661bdfc5f4
+
+###
+POST http://localhost:3000/api/notes
 Content-Type: application/json
 
 {
-    "title": "Ejemplo",
-    "description": "Description example"
+    "title": "Nota #2",
+    "description": "Descripcion de la primer nota creada para mi db"
 }
 
 ###
-PUT http://localhost:3001/api/notes/1010
+PUT http://localhost:3000/api/notes/1010
 Content-Type: application/json
 
 {
