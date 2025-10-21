@@ -1,30 +1,17 @@
-import { useState } from "react";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import CreateNotePage from "./pages/CreateNotePage";
+import EditNotePage from "./pages/EditNotePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="w-full max-w-[1200px] mx-auto px-3.5">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/createNote" element={<CreateNotePage />} />
+        <Route path="/editNote/:id" element={<EditNotePage />} />
+      </Routes>
+    </div>
   );
 }
 
