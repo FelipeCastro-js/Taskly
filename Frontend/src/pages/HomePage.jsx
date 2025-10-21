@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CardNotes from "../components/CardNotes";
 import LoadingScreen from "../components/LoadingScreen";
 import ProgressBar from "../components/ProgressBar";
+import formatData from "../utils/formatDate";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -46,7 +47,7 @@ function HomePage() {
             key={task._id}
             title={task.title}
             description={task.description}
-            date={"Oct 22, 2025"}
+            date={formatData(task.createdAt)}
           />
         ))}
       </div>
