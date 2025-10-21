@@ -1,0 +1,21 @@
+GET http://localhost:3001/api/notes
+
+###
+GET http://localhost:3001/api/notes/1234
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "title": "Ejemplo",
+    "description": "Description example"
+}
+
+###
+PUT http://localhost:3001/api/notes/1010
+Content-Type: application/json
+
+{
+    "title": "Ejemplo1"
+}
