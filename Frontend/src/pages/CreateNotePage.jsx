@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import NoteForm from "../components/NoteForm";
 
 function CreateNotePage() {
+  const navigate = useNavigate();
   const handleCreate = async (note) => {
     try {
       await axios
@@ -16,6 +18,7 @@ function CreateNotePage() {
             autoClose: 3000,
             theme: "colored",
           });
+          navigate("/");
         });
     } catch (error) {
       console.error(error);
