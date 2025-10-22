@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import CreateNotePage from "./pages/CreateNotePage";
 import EditNotePage from "./pages/EditNotePage";
 import HomePage from "./pages/HomePage";
@@ -11,6 +12,17 @@ function App() {
         <Route path="/createNote" element={<CreateNotePage />} />
         <Route path="/editNote/:id" element={<EditNotePage />} />
       </Routes>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="light"
+      />
     </div>
   );
 }

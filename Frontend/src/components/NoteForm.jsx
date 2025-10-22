@@ -1,13 +1,22 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useEffect, useState } from "react";
 
-function NoteForm() {
+function NoteForm({ onSubmit, initialDate }) {
+  const [task, setTask] = useState(initialDate);
+
+  useEffect(() => {
+    setTask(initialDate);
+  }, [initialDate]);
+
+  const handleChange = (e) => {
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast.success("Note created successfully 🎉", {
-      position: "top-center",
-      autoClose: 3000,
-    });
+    onSubmit(task);
   };
 
   return (
@@ -25,6 +34,8 @@ function NoteForm() {
         type="text"
         id="title"
         name="title"
+        value={task.title}
+        onChange={handleChange}
         required
       />
 
@@ -32,6 +43,8 @@ function NoteForm() {
         className="textarea textarea-bordered textarea-lg resize-y w-full mb-8 rounded-xl focus:ring-2 focus:ring-primary focus:outline-none"
         name="description"
         id="description"
+        value={task.description}
+        onChange={handleChange}
         placeholder="Write your note here..."
         rows="4"
         required
