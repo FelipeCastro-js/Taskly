@@ -66,9 +66,6 @@ function EditNotePage() {
 
   return (
     <div className="max-w-2xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold text-center mb-6 text-accent">
-        Edit Note
-      </h1>
       <EditNoteForm onSubmit={handleUpdate} initialData={note} />
     </div>
   );

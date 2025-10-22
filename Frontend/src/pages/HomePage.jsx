@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import CardNotes from "../components/CardNotes";
 import LoadingScreen from "../components/LoadingScreen";
 import ProgressBar from "../components/ProgressBar";
@@ -25,6 +26,30 @@ function HomePage() {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`${apiUrl}/api/notes/${id}`);
+      if (response.status === 200) {
+        setTask((prevTask) => prevTask.filter((t) => t._id !== id));
+
+        toast.success("🗑️ Note deleted successfully!", {
+          position: "bottom-right",
+          autoClose: 2500,
+          theme: "colored",
+        });
+      } else {
+        throw new Error("Delete failed");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("❌ Something went wrong deleting the note.", {
+        position: "bottom-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
+  };
+
   const total = task.length;
   const completed = task.filter((t) => t.completed).length;
 
@@ -48,6 +73,7 @@ function HomePage() {
             title={task.title}
             description={task.description}
             date={formatData(task.createdAt)}
+            onDelete={handleDelete}
           />
         ))}
       </div>
