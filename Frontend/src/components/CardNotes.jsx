@@ -1,7 +1,18 @@
 import { motion } from "framer-motion";
 import { SquarePen, Trash } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-function CardNotes({ title, description, date }) {
+function CardNotes({ id, title, description, date }) {
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate(`/editNote/${id}`);
+  };
+
+  const handleDelete = () => {
+    console.log("Delete note with id: ", id);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -16,8 +27,14 @@ function CardNotes({ title, description, date }) {
       <div className="flex justify-between items-center text-sm text-gray-400">
         <time>{date}</time>
         <div className="flex gap-4">
-          <SquarePen className="text-blue-400 hover:text-blue-300 cursor-pointer transition-colors" />
-          <Trash className="text-red-400 hover:text-red-300 cursor-pointer transition-colors" />
+          <SquarePen
+            onClick={handleEdit}
+            className="text-blue-400 hover:text-blue-300 cursor-pointer transition-colors"
+          />
+          <Trash
+            onClick={handleDelete}
+            className="text-red-400 hover:text-red-300 cursor-pointer transition-colors"
+          />
         </div>
       </div>
     </motion.div>

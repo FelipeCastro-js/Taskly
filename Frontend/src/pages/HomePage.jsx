@@ -44,7 +44,7 @@ function HomePage() {
       <div className="grid md:grid-cols-2 gap-6">
         {task.map((task) => (
           <CardNotes
-            key={task._id}
+            id={task._id}
             title={task.title}
             description={task.description}
             date={formatData(task.createdAt)}
