@@ -11,14 +11,15 @@ POST http://localhost:3000/api/notes
 Content-Type: application/json
 
 {
-    "title": "Nota #2",
-    "description": "Descripcion de la primer nota creada para mi db"
+    "title": "Personal Growth Reading",
+    "description": "Read at least 20 pages from a personal development or tech-related book. Write a quick summary of what stood out to you."
 }
 
 ###
-PUT http://localhost:3000/api/notes/1010
+PUT http://localhost:3000/api/notes/68f7ddb258da891229c65c40
 Content-Type: application/json
 
 {
-    "title": "Ejemplo1"
+    "title": "Task 1",
+    "description": "Finish the backend API"
 }

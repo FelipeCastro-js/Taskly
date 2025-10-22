@@ -2,11 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import NoteForm from "../components/NoteForm";
+import EditNoteForm from "../components/EditNoteForm";
 
 function EditNotePage() {
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
   const [note, setNote] = useState({ title: "", description: "" });
   const [loading, setLoading] = useState(true);
@@ -70,7 +69,7 @@ function EditNotePage() {
       <h1 className="text-3xl font-bold text-center mb-6 text-accent">
         Edit Note
       </h1>
-      <NoteForm onSubmit={handleUpdate} initialData={note} />
+      <EditNoteForm onSubmit={handleUpdate} initialData={note} />
     </div>
   );
 }
